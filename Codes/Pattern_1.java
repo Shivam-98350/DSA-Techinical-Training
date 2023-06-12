@@ -1,4 +1,4 @@
-package Codes;
+
 public class Pattern_1 {
 
     static void star(int n)

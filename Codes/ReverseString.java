@@ -1,4 +1,4 @@
-package Codes;
+
 public class ReverseString {
 
     static String reverse(String s)

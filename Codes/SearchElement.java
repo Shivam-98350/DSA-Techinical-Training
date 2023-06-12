@@ -1,4 +1,4 @@
-package Codes;
+
 public class SearchElement {
 
     static int search(int arr[],int num,int i)
