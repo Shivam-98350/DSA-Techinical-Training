@@ -1,6 +1,3 @@
-
-
-
 public class SumOfDigit {
 
     static int sumUsingLoop(int n)
