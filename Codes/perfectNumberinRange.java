@@ -16,7 +16,7 @@ public class perfectNumberinRange {
 }
 
 class Solution {
-    
+
     public ArrayList<Integer> perfect(int n) {
         ArrayList<Integer> ans = new ArrayList<>();
         recur(1, n, ans);
@@ -47,5 +47,3 @@ class Solution {
         return isPerfect(number, divisor + 1, sum);
     }
 }
-
-
