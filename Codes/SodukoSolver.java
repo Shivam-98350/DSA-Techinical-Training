@@ -14,56 +14,53 @@ public class SodukoSolver {
                 { '.', '.', '.', '4', '1', '9', '.', '.', '5' },
                 { '.', '.', '.', '.', '8', '.', '.', '7', '9' } };
 
-                solve(board,0,0);
+        solve(board, 0, 0);
+
     }
 
-    public static boolean solve(char board[][],int row,int col)
-    {
+    public static boolean solve(char board[][], int row, int col) {
 
-        if(col==board.length)
-        {
-            col=0;
-            row=row+1;
+        if (col == board.length) {
+            col = 0;
+            row = row + 1;
         }
-        if(row==board.length)
-        {
-            System.out.println(board);
+        if (row == board.length) {
+            System.out.println(Arrays.deepToString(board));
             return true;
         }
+        boolean res = false;
+        if (board[row][col] != '.') {
+            res = solve(board, row, col + 1);
+        } else {
+            for (char i = '1'; i <= (char) (board.length + '0'); i++) {
+                if (isSafe(board, row, col, i)) {
+                    System.out.println(Arrays.deepToString(board));
+                    board[row][col] = i;
+                    res = solve(board, row, col + 1);
+                    if (res)
+                        return true;
+                    board[row][col] = '.';
 
-        if(board[row][col]!='.')
-        {
-            solve(board, row, col+1);
-        }
-
-        
-        for(char i='1';i<=board.length+'0';i++)
-        {
-            if(isSafe(board,row,col,i))
-            {
-                System.out.println(Arrays.deepToString(board));
-                board[row][col]=i;
-                boolean res =solve(board, row, col+1);
-                if(res)return true;
-                board[row][col]='.';
-                
+                }
             }
         }
 
-        return false;
-        
+        return res;
+
     }
 
-    public static boolean isSafe(char[][]board,int row,int col,char c){
-        for(int i=0;i<9;i++){
-            if(board[i][col]==c) return false;//col check
+    public static boolean isSafe(char[][] board, int row, int col, char c) {
+        for (int i = 0; i < 9; i++) {
+            if (board[i][col] == c)
+                return false;// col check
 
-            if(board[row][i]==c) return false; //row check
+            if (board[row][i] == c)
+                return false; // row check
 
-            if(board[3*(row/3)+i/3][3*(col/3)+i%3]==c) return false;//checking in each 3 x 3 matrix
+            if (board[3 * (row / 3) + i / 3][3 * (col / 3) + i % 3] == c)
+                return false;// checking in each 3 x 3 matrix
         }
         return true;
-
     }
 
 }
