@@ -36,7 +36,53 @@ public class DefineTries {
         }
     }
 
+    static boolean search(String word) {
+        Node current = root;
+        for (int i = 0; i < word.length(); i++) {
+
+            int index = word.charAt(i) - 'a';
+
+            Node node = current.children[index];
+
+            if (node== null) {
+               return false;
+            }
+
+            if (i == word.length() - 1 && node.isTerminal ==false) {
+                return false;
+            }
+
+            current = current.children[index];
+
+        }
+        return true;
+    }
+    static boolean delete(String word) {
+       
+        return true;
+    }
+
     static Node root = new Node();
+
+    static void dfsTrie(Node root,String s)
+    {
+        Node node =root;
+
+        for(int i=0;i<26;i++)
+        {
+            if(node.children[i]!=null)
+            {
+                if(node.children[i].isTerminal==true)
+                {
+                    System.out.println(s+(char)(i+'a'));
+                }
+                else{
+                    dfsTrie(node.children[i], s+(char)(i+'a'));
+                }
+            }
+        }
+
+    }
 
     public static void main(String[] args) {
 
@@ -46,6 +92,14 @@ public class DefineTries {
             insert(s);
         }
 
+         String arr1[] = { "apple", "cat", "bag", "boy","shivam","apes", "apply" };
+
+        for (String s : arr1) {
+            System.out.println(s+" is present : "+search(s));
+        }
+
+        System.out.println("\n\nTraversal of the TRIE is ");
+        dfsTrie(root,"");
     }
 
 }
