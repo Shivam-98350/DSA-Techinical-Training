@@ -98,7 +98,7 @@ public class DefineTries {
             System.out.println(s+" is present : "+search(s));
         }
 
-        System.out.println("\n\nTraversal of the TRIE is ");
+        System.out.println("Traversal of the TRIE is ");
         dfsTrie(root,"");
     }
 
