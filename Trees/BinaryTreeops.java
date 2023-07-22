@@ -20,18 +20,19 @@ public class BinaryTreeops {
      BinaryTree<Integer> insert()
     {
         System.out.println("Enter the "+msg+" data");
-        Scanner sc=new Scanner(System.in);
-        int val=sc.nextInt();
+        try (Scanner sc = new Scanner(System.in)) {
+            int val=sc.nextInt();
 
-        if(val==-1)return null;
-        BinaryTree<Integer> node = new BinaryTree<>(val);
-        msg="left";
-        node.left=insert();
-        msg="right";
-        node.right=insert();
-        msg="root";
+            if(val==-1)return null;
+            BinaryTree<Integer> node = new BinaryTree<>(val);
+            msg="left";
+            node.left=insert();
+            msg="right";
+            node.right=insert();
+            msg="root";
 
-        return node;
+            return node;
+        }
     }
 
     void InorderTraversal(BinaryTree<Integer> root)
